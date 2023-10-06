@@ -32,8 +32,6 @@ export const Form = () => {
 
     if (existingContact) {
       alert(`${name} is already in contacts.`);
-    } else {
-      dispatch(addContact({ nameText: name, numberText: number }));
     }
   };
 

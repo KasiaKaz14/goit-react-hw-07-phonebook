@@ -1,7 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createAction,
+  createAsyncThunk,
+  createReducer,
+} from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const api = 'https://65202e98906e276284c425fe.mockapi.io/contacts/contacts';
+
+const filterState = '';
+const filterContact = createAction('contacts/FILTER');
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
@@ -30,12 +37,11 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const setFilter = createAsyncThunk(
-  'filter/setFilter',
-  async filterValue => {
-    return filterValue;
-  }
-);
+export const setFilter = createReducer(filterState, {
+  [filterContact]: (state, action) => {
+    return action.payload;
+  },
+});
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
