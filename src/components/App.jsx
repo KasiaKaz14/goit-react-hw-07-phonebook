@@ -15,11 +15,6 @@ export const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const handleSubmit = e => {
-    const name = e.name;
-    const number = e.number;
-  };
-
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
   };
@@ -43,7 +38,7 @@ export const App = () => {
       }}
     >
       <h1>Phonebook</h1>
-      <Form handleSubmit={handleSubmit} />
+      <Form />
       <h2>Contacts</h2>
       <Filter />
       <ContactList
