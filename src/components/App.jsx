@@ -18,16 +18,6 @@ export const App = () => {
   const handleSubmit = e => {
     const name = e.name;
     const number = e.number;
-
-    const existingContact = contacts.find(
-      c => c.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (existingContact) {
-      alert(`${name} is already in contacts.`);
-    } else {
-      dispatch(addContact({ nameText: name, numberText: number }));
-    }
   };
 
   const handleDelete = contactId => {

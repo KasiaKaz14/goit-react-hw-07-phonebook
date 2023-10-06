@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import css from './Form.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/createAction';
+import { getContacts } from 'redux/selectors';
 
 export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleChangeName = event => {
@@ -23,6 +25,16 @@ export const Form = () => {
     dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
+
+    const existingContact = contacts.find(
+      c => c.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (existingContact) {
+      alert(`${name} is already in contacts.`);
+    } else {
+      dispatch(addContact({ nameText: name, numberText: number }));
+    }
   };
 
   return (
