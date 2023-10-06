@@ -18,8 +18,9 @@ export const Form = () => {
     setNumber(value);
   };
 
-  const handleSubmit = () => {
-    dispatch(addContact({ name: name, number: number }));
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(addContact({ name, number }));
     setName('');
     setNumber('');
   };

@@ -14,10 +14,10 @@ const INITIAL_STATE = {
 };
 
 export const contactsReducer = createReducer(INITIAL_STATE.contacts, {
-  [addContact.fullfilled]: (state, action) => {
+  [addContact.fulfilled]: (state, action) => {
     state.items.push(action.payload);
   },
-  [deleteContact.fullfilled]: (state, action) => {
+  [deleteContact.fulfilled]: (state, action) => {
     const index = state.items.findIndex(
       contacts => contacts.id === action.payload
     );
