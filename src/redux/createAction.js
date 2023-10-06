@@ -1,15 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const api = 'https://651e8f4244a3a8aa47689629.mockapi.io/contacts/contacts';
+const api = 'https://65202e98906e276284c425fe.mockapi.io/contacts';
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, number }, thunkAPI) => {
+  async ({ nameText, numberText }, thunkAPI) => {
     try {
       const response = await axios.post(`${api}`, {
-        name: name,
-        number: number,
+        name: nameText,
+        number: numberText,
       });
       return response.data;
     } catch (error) {
