@@ -1,19 +1,19 @@
-import { createReducer } from '@reduxjs/toolkit';
 import {
   addContact,
   deleteContact,
   setFilter,
   fetchContacts,
-} from './createAction';
+} from '../redux/createAction';
+import { createReducer } from '@reduxjs/toolkit';
 
-const INITIAL_STATE = {
+const initialState = {
   contacts: {
     items: [],
     filter: '',
   },
 };
 
-export const contactsReducer = createReducer(INITIAL_STATE.contacts, {
+export const contactsReducer = createReducer(initialState.contacts, {
   [addContact.fulfilled]: (state, action) => {
     state.items.push(action.payload);
   },
@@ -24,8 +24,9 @@ export const contactsReducer = createReducer(INITIAL_STATE.contacts, {
     state.items.splice(index, 1);
   },
   [setFilter.fulfilled]: (state, action) => {
-    state.items = action.payload;
+    state.filter = action.payload;
   },
+
   [fetchContacts.fulfilled]: (state, action) => {
     state.items = action.payload;
   },

@@ -7,8 +7,8 @@ export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getFilter);
 
-  const handleChange = event => {
-    dispatch(setFilter(event.target.value));
+  const handleChange = e => {
+    dispatch(setFilter(e.target.value));
   };
 
   return (
@@ -20,7 +20,7 @@ export const Filter = () => {
         type="text"
         placeholder="Find contact by name"
         onChange={handleChange}
-        filter={filter}
+        value={filter}
       />
     </label>
   );
