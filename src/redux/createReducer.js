@@ -34,3 +34,11 @@ export const contactsReducer = createReducer(initialState.contacts, {
     console.error(action.error);
   },
 });
+
+const filterInitialState = '';
+
+export const filterReducer = createReducer(filterInitialState, {
+  [setFilter]: (state, action) => {
+    return action.payload;
+  },
+});

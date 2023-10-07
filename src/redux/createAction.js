@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const api = 'https://65202e98906e276284c425fe.mockapi.io/contacts/contacts';
@@ -30,12 +30,7 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const setFilter = createAsyncThunk(
-  'filter/setFilter',
-  async filterValue => {
-    return filterValue;
-  }
-);
+export const setFilter = createAction('contacts/FILTER');
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
