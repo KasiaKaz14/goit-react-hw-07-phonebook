@@ -3,7 +3,7 @@ import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, deleteContact, fetchContacts } from 'redux/createAction';
+import { deleteContact, fetchContacts } from 'redux/createAction';
 import { getContacts, getFilter } from 'redux/selectors';
 
 export const App = () => {
@@ -14,21 +14,6 @@ export const App = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  const handleSubmit = e => {
-    const name = e.name;
-    const number = e.number;
-
-    const existingContact = contacts.find(
-      c => c.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (existingContact) {
-      alert(`${name} is already in contacts.`);
-    } else {
-      dispatch(addContact({ nameText: name, numberText: number }));
-    }
-  };
 
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
@@ -53,7 +38,7 @@ export const App = () => {
       }}
     >
       <h1>Phonebook</h1>
-      <Form handleSubmit={handleSubmit} />
+      <Form />
       <h2>Contacts</h2>
       <Filter />
       <ContactList
