@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/createAction';
 import { nanoid } from 'nanoid';
 import { getContacts } from 'redux/selectors';
+import Notiflix from 'notiflix';
 
 export const Form = () => {
   const [name, setName] = useState('');
@@ -24,17 +25,14 @@ export const Form = () => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const existingContact = contacts.find(
-      c => c.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (existingContact) {
-      alert(`${name} is already in contacts.`);
-    } else {
-      dispatch(addContact({ nameText: name, numberText: number }));
-      setName('');
-      setNumber('');
+    if (contacts.some(contact => contact.name === name)) {
+      Notiflix.Notify.warning(`${name} is already in contacts.`);
+      return;
     }
+    dispatch(addContact({ nameText: name, numberText: number }));
+    setName('');
+    setNumber('');
+    Notiflix.Notify.success(`${name} has been successfully added to contacts!`);
   };
 
   const loginNameId = nanoid();

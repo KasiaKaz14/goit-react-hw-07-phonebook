@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContacts } from 'redux/createAction';
 import { getContacts, getFilter } from 'redux/selectors';
+import Notiflix from 'notiflix';
 
 export const App = () => {
   const contacts = useSelector(getContacts);
@@ -17,6 +18,7 @@ export const App = () => {
 
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
+    Notiflix.Notify.success(`The contact has been successfully removed`);
   };
 
   const getFilteredContacts = () => {
