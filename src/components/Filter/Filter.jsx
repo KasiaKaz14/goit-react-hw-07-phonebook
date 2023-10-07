@@ -1,14 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './Filter.module.css';
 import { getFilter } from 'redux/selectors';
-import { setFilter } from 'redux/createAction';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(getFilter);
 
   const handleChange = e => {
-    dispatch(setFilter(e.target.value));
+    dispatch(setFil(e.target.value));
   };
 
   return (
