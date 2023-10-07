@@ -30,7 +30,6 @@ export const Form = () => {
 
     if (existingContact) {
       alert(`${name} is already in contacts.`);
-      event.target.reset();
     } else {
       dispatch(addContact({ nameText: name, numberText: number }));
       setName('');
