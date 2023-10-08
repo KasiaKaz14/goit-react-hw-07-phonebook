@@ -30,7 +30,12 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export const setFilter = createAction('contacts/FILTER');
+export const setFilter = createAsyncThunk(
+  'filter/setFilter',
+  async filterValue => {
+    return filterValue;
+  }
+);
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
